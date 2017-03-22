@@ -2,7 +2,7 @@
 
 void Menu() {
 	int p, m, n, mode, task;
-	printf("Hello! \nPlease enter a size three-dimensional panels p, m, n:\n");
+	printf("Hello! \nPlease enter a size three-dimensional panels (p, m, n) <=500:\n");
 	scanf("%d%d%d", &p, &m, &n);
 	printf("Okay, and now plese enter a mode of filling\n1-Sorted\n2-Random\n3-Reverse\n ");
 	scanf("%d", &mode);
@@ -17,13 +17,13 @@ void Menu() {
 	scanf("%d", &task);
 	switch (task)
 	{
-	case 1: printf("I`m working: %dms\n", MeasureModeOne(p, m, n, mode)); break;
-	case 2: printf("I`m working: %dms\n", MeasureModeTwo(p, m, n, mode)); break;
-	case 3: printf("I`m working: %dms\n", MeasureModeThree(p, m, n, mode)); break;
+	case 1: printf("I`m working: %dms\n", ((double)MeasureModeOne(p, m, n, mode) / CLOCKS_PER_SEC) * 100); break;
+	case 2: printf("I`m working: %dms\n", ((double)MeasureModeTwo(p, m, n, mode) / CLOCKS_PER_SEC) * 100); break;
+	case 3: printf("I`m working: %dms\n", ((double)MeasureModeThree(p, m, n, mode) / CLOCKS_PER_SEC) * 100); break;
 	case 4:
-		printf("Task 1: %dms\n", MeasureModeOne(p, m, n, mode));
-		printf("Task 2: %dms\n", MeasureModeTwo(p, m, n, mode));
-		printf("Task 3: %dms\n", MeasureModeThree(p, m, n, mode));
+		printf("Task 1: %.lfms\n", ((double)MeasureModeOne(p, m, n, mode)/ CLOCKS_PER_SEC)*100);
+		printf("Task 2: %.lfms\n", ((double)MeasureModeTwo(p, m, n, mode)/ CLOCKS_PER_SEC) * 100);
+		printf("Task 3: %.lfms\n", ((double)MeasureModeThree(p, m, n, mode)/ CLOCKS_PER_SEC) * 100);
 		break;
 	default:
 		break;

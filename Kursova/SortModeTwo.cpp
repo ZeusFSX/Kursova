@@ -3,10 +3,10 @@
 clock_t SortModeTwo(const int& P, const int& M, const  int& N) {
 	
 	clock_t tstart = clock();
-	const int range = M*N;
+	const int range = M*N; //змінна яка зберігає значення кількості елементів в перерізі
 	int divi = 0;
 	int modi = 0;
-	int carry = 0;
+	int carry = 0; //змінна яка вказує чи потрібно переходити на наступний рядок 
 
 	for (int k = 0; k < P; k++)
 		for (int i = 0; i < range - 1; i++) {
