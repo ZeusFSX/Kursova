@@ -6,51 +6,19 @@
 #include <math.h>
 #include <ctime>
 #include <memory.h>
-const int PMax = 500;//константа яка визначає максимальний розмір масива на всі три його проекції
-const int Time = 10;//константа яка визначає кількість повторень для виміру середнього часу 
+const int PMax = 500;
+const int Time = 10;
 
-extern int Cube[PMax][PMax][PMax]; // тривимірний масив який будем сортувати розміром PMax
+extern int Cube[PMax][PMax][PMax];
 
-clock_t SortModeOne(const int& P, const int& M, const int& N); // алгоритм обходу номер 1 
-															   //на вхід приймає розмірність тривимірного масиву на три координати 
-															   //на вихід видає час роботи алгоритму
+clock_t SortModeOne(const int& P, const int& M, const int& N);
+clock_t SortModeTwo(const int& P, const int& M, const  int& N);
+clock_t SortModeThree(const int& P, const  int& M, const int& N);
 
-clock_t SortModeTwo(const int& P, const int& M, const  int& N);// алгоритм обходу номер 2
-															   //на вхід приймає розмірність тривимірного масиву на три координати 
-															   //на вихід видає час роботи алгоритму
+clock_t MeasureModeOne(const int& P, const int& M, const int& N, const int& mode);
+clock_t MeasureModeTwo(const int& P, const int& M, const int& N, const  int& mode);
+clock_t MeasureModeThree(const int& P, const int& M, const int& N, const  int& mode);
 
-
-clock_t SortModeThree(const int& P, const  int& M, const int& N);// алгоритм обходу номер 3
-																 //на вхід приймає тривимірного розмірність масиву на три координати 
-																 //на вихід видає час роботи алгоритму
-
-
-
-clock_t MeasureModeOne(const int& P, const int& M, const int& N, const int& mode);//функція для вимірювання середнього часу роботи 
-																				  // алгоритму обходу номер 1
-																				  // на вхід приймає розмірність тривимірного масиву на три координати 
-																				  // та режим в якому буде заповнений масив до роботи алгоритму 
-
-
-clock_t MeasureModeTwo(const int& P, const int& M, const int& N, const  int& mode);//функція для вимірювання середнього часу роботи 
-																				  // алгоритму обходу номер 2
-																				  // на вхід приймає розмірність тривимірного масиву на три координати 
-																				  // та режим в якому буде заповнений масив до роботи алгоритму 
-
-
-clock_t MeasureModeThree(const int& P, const int& M, const int& N, const  int& mode);//функція для вимірювання середнього часу роботи 
-																				  // алгоритму обходу номер 3
-																				  // на вхід приймає розмірність тривимірного масиву на три координати 
-																				  // та режим в якому буде заповнений масив до роботи алгоритму 
-
-
-void EnterData(const int& P, const int& M, const int& N, const int& mode); //безтипова функція яка заповнює тривимірний масив 
-																		   //згідно вибраного режиму
-																		   //приймає розмір масива 
-																		   //та режим заповнення
-
-
-void OutputData(const int& P, const int& M, const int& N);//безтипова функція для виводу тривимірного масива по перерізам
-
-
-void Menu();//безтипова функція яка надає можливість вибору розмірності тривимірного масиву та роботи певного алгоритму обходу та виводить час роботи певного алгоритму обходу
+void EnterData(const int& P, const int& M, const int& N, const int& mode);
+void OutputData(const int& P, const int& M, const int& N);
+void Menu();
