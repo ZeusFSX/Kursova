@@ -7,7 +7,7 @@ clock_t SortModeThree(const int& P, const  int& M, const  int& N) {
 		for (int j = 0; j < N; j++)
 			for (int i = 0; i < M; i++) {
 			{
-				int min = Cube[k][i][j];
+				int min = Cube[k][i][j];//тимчасова змінна яка яка зберігає мінімальне значення
 				if (i < M - 1)
 					for (int s = i + 1; s < M; s++)
 						if (Cube[k][s][j] < min) {

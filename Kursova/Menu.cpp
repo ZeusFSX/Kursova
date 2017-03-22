@@ -1,7 +1,11 @@
 #include "Header.h"
 
 void Menu() {
-	int p, m, n, mode, task;
+	int p, //змінна в які зберігається кількість перерізів
+		m, //змінна в якій зберігається кількість строк у кожному перерізі
+		n, //змінна в якій зберігається кількість стовбців у кожному перерізі
+		mode, // змінна в якій зберігається режим в якому тривимірний масив буде упарядкований до сортування
+		task; // змінна в якій зберігається номер для вибору алгоритму обходу
 	printf("Hello! \nPlease enter a size three-dimensional panels (p, m, n) <=500:\n");
 	scanf("%d%d%d", &p, &m, &n);
 	printf("Okay, and now plese enter a mode of filling\n1-Sorted\n2-Random\n3-Reverse\n ");
