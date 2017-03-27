@@ -1,34 +1,52 @@
 #include "Header.h"
-
+#include "Measure.h"
+#include "SortMode.h"
 void Menu() {
 	int p, //змінна в які зберігається кількість перерізів
 		m, //змінна в якій зберігається кількість строк у кожному перерізі
 		n, //змінна в якій зберігається кількість стовбців у кожному перерізі
-		mode, // змінна в якій зберігається режим в якому тривимірний масив буде упарядкований до сортування
-		task; // змінна в якій зберігається номер для вибору алгоритму обходу
-	printf("Hello! \nPlease enter a size three-dimensional panels (p, m, n) <=500:\n");
-	scanf("%d%d%d", &p, &m, &n);
-	printf("Okay, and now plese enter a mode of filling\n1-Sorted\n2-Random\n3-Reverse\n ");
-	scanf("%d", &mode);
-	EnterData(p, m, n, mode);
-	
-	/*OutputData(p, m, n);
-	printf("I`m working: %dms\n", SortModeOne(p, m, n)); 
-	OutputData(p, m, n);*/
-	
-	printf("Please select task: 1, 2 or 3:\n");
-	printf("If you see the result work all task enter 4: \n");
-	scanf("%d", &task);
-	switch (task)
-	{
-	case 1: printf("I`m working: %dms\n", ((double)MeasureModeOne(p, m, n, mode) / CLOCKS_PER_SEC) * 100); break;
-	case 2: printf("I`m working: %dms\n", ((double)MeasureModeTwo(p, m, n, mode) / CLOCKS_PER_SEC) * 100); break;
-	case 3: printf("I`m working: %dms\n", ((double)MeasureModeThree(p, m, n, mode) / CLOCKS_PER_SEC) * 100); break;
-	case 4:
-		printf("Task 1: %.lfms\n", ((double)MeasureModeOne(p, m, n, mode)/ CLOCKS_PER_SEC)*100);
-		printf("Task 2: %.lfms\n", ((double)MeasureModeTwo(p, m, n, mode)/ CLOCKS_PER_SEC) * 100);
-		printf("Task 3: %.lfms\n", ((double)MeasureModeThree(p, m, n, mode)/ CLOCKS_PER_SEC) * 100);
+		test;
+		
+	printf("Do you see if program sorted mas?\n 1 - Yes\n 2 - No\n");
+	scanf("%d", &test);
+	switch (test) {
+	case 1:
+		p = 2, m = 3, n = 4;
+		EnterData(p, m, n, 3);
+		printf("Mass before:\n");
+		OutputData(p, m, n);
+		printf("Task 1: \n");
+		SortModeOne(p, m, n);
+		printf("Mass after:\n");
+		OutputData(p, m, n);
+
+		EnterData(p, m, n, 3);
+		printf("Mass before:\n");
+		OutputData(p, m, n);
+		printf("Task 2:\n");
+		SortModeTwo(p, m, n);
+		printf("Mass after:\n");
+		OutputData(p, m, n);
+
+		EnterData(p, m, n, 3);
+		printf("Mass before:\n");
+		OutputData(p, m, n);
+		printf("Task 3:\n");
+		SortModeThree(p, m, n);
+		printf("Mass after:\n");
+		OutputData(p, m, n);
+
 		break;
+	case 2:
+		printf("Hello! \nPlease enter a size three-dimensional panels (p, m, n) <=500:\n");
+		scanf("%d%d%d", &p, &m, &n);
+
+		printf("\tSorted\tRandom\tReverse\n");
+		printf("Task 1: %.lf\t%.lf\t%.lf\n", ((double)MeasureModeOne(p, m, n, 1) / CLOCKS_PER_SEC) * 100, ((double)MeasureModeOne(p, m, n, 2) / CLOCKS_PER_SEC) * 100, ((double)MeasureModeOne(p, m, n, 3) / CLOCKS_PER_SEC) * 100);
+		printf("Task 2: %.lf\t%.lf\t%.lf\n", ((double)MeasureModeTwo(p, m, n, 1) / CLOCKS_PER_SEC) * 100, ((double)MeasureModeTwo(p, m, n, 2) / CLOCKS_PER_SEC) * 100, ((double)MeasureModeTwo(p, m, n, 3) / CLOCKS_PER_SEC) * 100);
+		printf("Task 3: %.lf\t%.lf\t%.lf\n", ((double)MeasureModeThree(p, m, n, 1) / CLOCKS_PER_SEC) * 100, ((double)MeasureModeThree(p, m, n, 2) / CLOCKS_PER_SEC) * 100, ((double)MeasureModeThree(p, m, n, 3) / CLOCKS_PER_SEC) * 100);
+		break;
+	
 	default:
 		break;
 	}

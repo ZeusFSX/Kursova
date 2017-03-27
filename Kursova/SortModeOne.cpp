@@ -1,4 +1,5 @@
 #include "Header.h"
+#include "SortMode.h"
 
 clock_t SortModeOne(const int& P, const  int& M, const  int& N) {
 	clock_t tstart = clock();
