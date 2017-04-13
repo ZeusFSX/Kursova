@@ -1,7 +1,7 @@
 #pragma once
 #include "Header.h"
 
-void EnterData(const int& P, const int& M, const int& N, const int& mode); //безтипова функція яка заповнює тривимірний масив 
+void EnterData(const int& P, const int& M, const int& N, const int& mode); //Функція яка заповнює тривимірний масив 
 																		   //згідно вибраного режиму
 																		   //приймає розмір масива 
 																		   //та режим заповнення

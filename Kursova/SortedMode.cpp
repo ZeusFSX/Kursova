@@ -5,9 +5,9 @@ clock_t SortModeOne(const int& P, const  int& M, const  int& N) {
 	clock_t tstart = clock();
 	int arr[MMax*NMax];//тимчасовий масив в який буде переписано всі значення перерерізу, і на якому буде відбуватися сортування
 	for (int k = 0; k < P; k++) {
-		int temp = 0; //тимчасова змінна для проходу по тимчасовому масиву arr
+		int temp = 0; // проядковий номер елемента в масиві
 
-					  //Запис в одновимірний тимчасовий масив розміром M*N-1 матриці М*N
+					  //Запис в одновимірний тимчасовий масив перерізу
 		for (int j = 0; j < N; j++)
 			for (int i = 0; i < M; i++)
 				arr[temp++] = Cube[k][i][j];
@@ -25,7 +25,7 @@ clock_t SortModeOne(const int& P, const  int& M, const  int& N) {
 				}
 		}
 
-		//Запис з одновимірного масива в обратно
+		//Запис з одновимірного масива в переріз
 		temp = 0;
 		for (int j = 0; j < N; j++)
 			for (int i = 0; i < M; i++)
@@ -38,8 +38,8 @@ clock_t SortModeTwo(const int& P, const int& M, const  int& N) {
 
 	clock_t tstart = clock();
 	const int range = M*N; //змінна яка зберігає значення кількості елементів в перерізі
-	int divi = 0;
-	int modi = 0;
+	int divi = 0; // Ціла частина від ділення і на М
+	int modi = 0; // Остача від ділення і на М
 	int carry = 0; //змінна яка вказує чи потрібно переходити на наступний рядок 
 
 	for (int k = 0; k < P; k++)
