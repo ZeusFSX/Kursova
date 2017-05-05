@@ -1,17 +1,18 @@
 #include "Header.h"
 #include "Measure.h"
 #include "SortMode.h"
-#include "Menu.h"
+#include "SortVector.h"
+#include "Data.h"
 void Menu() {
 	long long p, //змінна в які зберігається кількість перерізів
 		m, //змінна в якій зберігається кількість строк у кожному перерізі
 		n; //змінна в якій зберігається кількість стовбців у кожному перерізі
 	char test;
 		
-	printf("Do you see if program sorted array?\n y or n\n");
+	printf("Select test mode:\n1: Test sorting \n2: Measure time for Vector\n3: Measure time for Cube\nYour choice: ");
 	scanf("%c", &test);
 	switch (test) {
-	case 'y':
+	case '1':
 		p = 2, m = 3, n = 4;
 		EnterData(p, m, n, 3);
 		printf("Array before:\n");
@@ -37,9 +38,22 @@ void Menu() {
 		printf("Array after:\n");
 		OutputData(p, m, n);
 
+		printf("Sorting Vector:\n\nArray before : \n");
+		EnterDataVector(n*2, 3);
+		OutputDataVector(n * 2);
+		SortVector(n*2);
+		printf("Array after:\n");
+		OutputDataVector(n*2);
+
 		break;
-	case 'n':
-		printf("Hello! \nPlease enter a size three-dimensional panels (p, m, n) <=500:\n");
+	case '2':
+		printf("Hello! \nPlease enter a size masive: ");
+		scanf("%d", &n);
+		printf("\tSorted\t\tRandom\t\tReverse\n");
+		printf("Vector: %.lf\t\t%.lf\t\t%.lf\n", (double)MeasureModeVector(n, 1), (double)MeasureModeVector(n, 2), (double)MeasureModeVector(n, 3));
+		break;
+	case '3':
+		printf("Hello! \nPlease enter a size three-dimensional panels (p, m, n) < 500:\n");
 		scanf("%d%d%d", &p, &m, &n);
 		//printf("%d %d %d \n", p, m, n);
 		printf("\tSorted\t\tRandom\t\tReverse\n");
@@ -53,40 +67,3 @@ void Menu() {
 	}
 };
 
-void OutputData(const int& P, const int& M, const int& N) {
-	for (int k = 0; k < P; k++) {
-		for (int i = 0; i < M; i++) {
-			for (int j = 0; j < N; j++)	printf("%3d ", Cube[k][i][j]);
-			printf("\n");
-		}
-		printf("\n\n");
-	}
-}
-
-void EnterData(const int& P, const int& M, const  int& N, const  int& mode) {
-	int temp = 0;//тимчасова змінна яка використовується для зберігання значень якими заповнюється тривимірний масив
-	switch (mode)
-	{
-	case 1:
-		for (int k = 0; k < P; k++)
-			for (int j = 0; j < N; j++)
-				for (int i = 0; i < M; i++)
-					Cube[k][i][j] = temp++; //послідовне заповнення
-		break;
-	case 2:
-		for (int k = 0; k < P; k++)
-			for (int j = 0; j < N; j++)
-				for (int i = 0; i < M; i++)
-					Cube[k][i][j] = (rand() % 1000) - 500;//рандомне заповнення в діапазоні від -500 до 1000
-		break;
-	case 3:
-		temp = P*M*N;
-		for (int k = 0; k < P; k++)
-			for (int j = 0; j < N; j++)
-				for (int i = 0; i < M; i++)
-					Cube[k][i][j] = temp--;//обернене заповнення
-		break;
-	default:
-		break;
-	}
-}

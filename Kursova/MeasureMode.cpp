@@ -1,7 +1,7 @@
 #include "Header.h"
-#include "Measure.h"
 #include "SortMode.h"
-#include "Menu.h"
+#include "Data.h"
+#include "SortVector.h"
 clock_t MeasureModeOne(const int& P, const int& M, const  int& N, const int& mode) {
 
 	clock_t result = 0;//тимчасова зм≥нна €ка накопичуЇ сумарний результат часу роботи прот€гом вс≥х повторень
@@ -27,6 +27,15 @@ clock_t MeasureModeThree(const int& P, const int& M, const  int& N, const  int& 
 	for (int i = 1; i <= Time; i++) {
 		result += SortModeThree(P, M, N);
 		EnterData(P, M, N, mode);
+	}
+	return (clock_t)((double)result / Time);
+}
+clock_t MeasureModeVector(const  int& N, const  int& mode) {
+
+	clock_t result = 0; //тимчасова зм≥нна €ка накопичуЇ сумарний результат часу роботи прот€гом вс≥х повторень
+	for (int i = 1; i <= Time; i++) {
+		result += SortVector(N);
+		EnterDataVector(N, mode);
 	}
 	return (clock_t)((double)result / Time);
 }
